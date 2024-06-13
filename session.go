@@ -70,15 +70,16 @@ func (s *Session) start() {
 				s.Close()
 			}
 		}()
-	}
 
-	s.wg.Add(1)
-	go func() {
-		defer s.wg.Done()
-		if err := s.receiveUniStreams(); err != nil {
-			s.Close()
-		}
-	}()
+	} else {
+		s.wg.Add(1)
+		go func() {
+			defer s.wg.Done()
+			if err := s.receiveUniStreams(); err != nil {
+				s.Close()
+			}
+		}()
+	}
 }
 
 func (s *Session) NewSendFlow(id uint64) (*SendFlow, error) {

@@ -1,4 +1,4 @@
-module github.com/mengelbart/roq
+module github.com/fatih-alperen/roq
 
 go 1.21.1
 
